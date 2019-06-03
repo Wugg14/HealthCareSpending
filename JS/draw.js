@@ -13,13 +13,9 @@ function draw(data){
         .style("height", height + margin)
         .attr('class','chart');
 
-    //choose a year of the data
-    let year = data[1];
 
     let restructured = restructure_data(data, 1970);
 
-
-    console.log(restructured);
 
     d3.select(".chart")
         .selectAll("div")

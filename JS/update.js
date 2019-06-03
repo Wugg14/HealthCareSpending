@@ -6,9 +6,7 @@ function update(year, data){
 
     console.log(year);
 
-    restructured = restructure_data(data, year);
-
-    console.log(restructured);
+    let restructured = restructure_data(data, year);
 
     d3.select(".chart")
         .selectAll("div")
@@ -31,6 +29,4 @@ function update(year, data){
         .text(function(d){
             return d["Country"];
         });
-
-    console.log('done!');
 }
