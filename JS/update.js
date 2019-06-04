@@ -21,7 +21,7 @@ function update(year, data){
             if(d['Spending'] === "null"){
                 return '5px';
             }
-            return d['Spending'] * 100 + 'px';
+            return d['Spending'] * 80 + 'px';
         })
         .style("height", "50px")
         .style("background-color", "lightBlue")

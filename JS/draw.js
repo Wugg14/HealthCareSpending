@@ -7,17 +7,27 @@ function draw(data){
         width = 1400 - margin,
         height = 600 - margin;
 
+    let x = d3.scaleLinear()
+        .range([0, width]);
+
+    x.domain([0,17.12]);
+
+    let xAxis = d3.axisBottom(x);
+
+
     let svg = d3.select("body")
-        .append("div")
+        .append("svg")
         .style("width", width + margin)
         .style("height", height + margin)
-        .attr('class','chart');
+        .append('g')
+            .attr('class','chart');
+
 
 
     let restructured = restructure_data(data, 1970);
 
 
-    d3.select(".chart")
+    d3.select("svg")
         .selectAll("div")
         .data(restructured)
         .enter()
@@ -26,7 +36,7 @@ function draw(data){
             if(d['Spending'] === "null"){
                 return '5px';
             }
-            return d['Spending'] * 100 + 'px';
+            return d['Spending'] * 80 + 'px';
         })
         .style("height", "50px")
         .style("background-color", "lightBlue")
@@ -34,5 +44,6 @@ function draw(data){
         .text(function(d){
             return d["Country"];
         });
+
     begin_counting_years(data);
 }
