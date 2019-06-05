@@ -1,4 +1,4 @@
-function begin_counting_years(data){
+function begin_counting_years(data, x, y){
     let years = [];
 
     for(let i=1970;i<2019;i++){
@@ -7,14 +7,12 @@ function begin_counting_years(data){
 
     let i = 0;
     setInterval(function(){
-        update(years[i], data);
+        update(years[i], data, x, y);
         i +=1;
         if(i === 49){
             clearInterval();
         }
     }, 2000);
-
-
 }
 
 

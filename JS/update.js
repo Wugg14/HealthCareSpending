@@ -1,4 +1,4 @@
-function update(year, data){
+function update(year, data, xScale, yScale){
 
     //update.js title
     d3.select('h1')
@@ -8,25 +8,21 @@ function update(year, data){
 
     let restructured = restructure_data(data, year);
 
-    d3.select(".chart")
-        .selectAll("div")
-        .remove();
+    g = d3.select("g")
 
-    d3.select(".chart")
-        .selectAll("div")
+    d3.select("g")
+        .selectAll("rect")
+        .remove();
+    
+
+    g.selectAll(".bar")
         .data(restructured)
         .enter()
-        .append("div")
-        .style('width', function(d){
-            if(d['Spending'] === "null"){
-                return '5px';
-            }
-            return d['Spending'] * 80 + 'px';
-        })
-        .style("height", "50px")
-        .style("background-color", "lightBlue")
-        .style("border", "1px solid black")
-        .text(function(d){
-            return d["Country"];
-        });
+        .append("rect")
+        .attr("class", "bar")
+        .attr("x", 0)
+        .attr("y", function(d) { return yScale(d.Country); })
+        .attr("height", yScale.bandwidth())
+        .attr("width", function(d) { return xScale(d.Spending); })
+        .attr("fill", "black");
 }
