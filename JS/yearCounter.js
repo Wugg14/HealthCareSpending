@@ -1,7 +1,7 @@
 function begin_counting_years(data, x, y){
     let years = [];
 
-    for(let i=1970;i<2019;i++){
+    for(let i=1972;i<2019;i++){
         years.push(i);
     }
 

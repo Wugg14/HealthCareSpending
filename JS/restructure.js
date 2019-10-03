@@ -1,6 +1,7 @@
+//Structures the data into an array that can be bound to D3
 function restructure_data(data, year){
 
-    const indexedYear = year - 1970;
+    const indexedYear = year - 1972;
     const year_data = data[indexedYear];
     let structuredArray = [];
     const countryKeys = Object.keys(year_data);
