@@ -5,19 +5,19 @@ function draw(data){
     "use strict";
     //set some constants
     let svg = d3.select("svg"),
-        margin = 200,
+        margin = 100,
         width = svg.attr("width") - margin,
         height = svg.attr("height") - margin;
 
     //set the scale and range(pixel space available)
-    //y range is always backwards in d2 because dom renders top to bottom
+    //y range is always backwards in d3 because dom renders top to bottom
     let xScale = d3.scaleLinear().range([0, width]),
         //band scale into categories
         yScale = d3.scaleBand().range([height, 0]).paddingInner(0.4);
 
     //add group element to place things inside of
     let g = svg.append("g")
-        .attr("transform", "translate(" + 100 + "," + 100 + ")");
+        .attr("transform", "translate(" + 100 + "," + 50 + ")");
 
     //get the data for 1970
     let restructured = restructure_data(data, 1972);
@@ -58,13 +58,28 @@ function draw(data){
         .attr("y", function(d) { return yScale(d.Country); })
         .attr("height", yScale.bandwidth())
         .attr("width", function(d) { return xScale(d.Spending); })
-        .attr("fill", "black");
+        .attr("fill", "grey");
 
     //Color USA and Average
     let usa = document.getElementById("United States");
     let average = document.getElementById("Average")
     usa.style.fill = "red";
     average.style.fill = "blue";
+
+    // Add jQuery UI slider
+    jQuery( "#date-slider" ).slider({
+        value: 2017,
+        min: 1972,
+        max: 2017,
+        step: 1,
+        slide: function( event, ui ) {
+            $( "#amount" ).val('Year: ' + ui.value );
+            update(ui.value, data, xScale, yScale)
+        }
+    });
+
+    let sliderContainer = document.getElementById("slider-container");
+    sliderContainer.style.display = "none";
 
     begin_counting_years(data, xScale, yScale);
 }

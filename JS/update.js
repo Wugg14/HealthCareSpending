@@ -38,7 +38,7 @@ function update(year, data, xScale, yScale){
         .attr("y", function(d) { return yScale(d.Country); })
         .attr("height", yScale.bandwidth())
         .attr("width", function(d) { return xScale(d.Spending); })
-        .attr("fill", "black");
+        .attr("fill", "grey");
 
     //Color USA and Average
     let usa = document.getElementById("United States");
@@ -46,6 +46,5 @@ function update(year, data, xScale, yScale){
     let average = document.getElementById("Average");
     average.style.fill = "blue";
 
-    debugger;
 
 }

@@ -9,14 +9,38 @@
     <script src="JS/update.js"></script>
     <script src="JS/yearCounter.js"></script>
     <title>Health Care Spending as a Percentage of GDP over time</title>
+    <style>
+        #slider-container{
+            max-width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
+        #amount {
+            border: 0;
+            font-weight: bold;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
 <h1>Health Care Spending as a Percentage of GDP 1972</h1>
-<svg width="1200" height="600">
+<svg width="900" height="450">
 </svg>
+<hr/>
+<div id="slider-container">
+    <input type="text" id="amount" readonly value="Year: 2017">
+    <br/>
+    <div id="date-slider"></div>
+</div>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script>
     d3.csv('healthcarespending.csv').then(draw)
 </script>
+
 </body>
 </html>
