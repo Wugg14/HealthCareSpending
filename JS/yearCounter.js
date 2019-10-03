@@ -16,7 +16,7 @@ function begin_counting_years(data, x, y){
             let sliderContainer = document.getElementById("slider-container");
             sliderContainer.style.display = "block";
         }
-    }, 500);
+    }, 800);
 
 }
 
